@@ -8,45 +8,28 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="title.css">
 
     <title>まごのてメンバーズ</title>
 </head>
 
 <body>
-    <p id="id_1">電気 てすと</p>
-    <!--<div class="contents" id="table"></div>-->
-    <div class="container" id="table"></div>
-    <!--
-    <div class="container">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>1</th>
-                    <td>Hanako</td>
-                    <td>Qiita</td>
-                    <td>@Hanaq</td>
-                </tr>
-                <tr>
-                    <th>2</th>
-                    <td>Taro</td>
-                    <td>Qiita</td>
-                    <td>@TaroQ</td>
-                </tr>
-            </tbody>
-        </table>
+    <div style="max-width: 798px" class="mx-auto">
+        <img src="images/top.png" class="d-block img-fluid">
+        <div class="row no-gutters">
+            <div class="col-sm-2"><img src="images/elec.png"></div>
+            <div class="col-sm-2"><img src="images/shop.png"></div>
+            <div class="col-sm-2"><img src="images/powerwork.png"></div>
+            <div class="col-sm-2"><img src="images/consul.png"></div>
+            <div class="col-sm-2"><img src="images/home.png"></div>
+            <div class="col-sm-2"><img src="images/study.png"></div>
+        </div>
+        <p id="id_1">電気 てすと</p>
+        <!--<div class="contents" id="table"></div>-->
+        <div class="container" id="table"></div>
     </div>
--->
 
     <script type="text/javascript">
-        // 変数定義（「//」から始まる行はコメントアウト）
         var id_1 = document.getElementById("id_1");
         var id_2 = document.getElementById("id_2");
         var id_3 = document.getElementById("id_3");
@@ -113,7 +96,7 @@
 
         console.log(data);
         id_1.onclick = function id1Click() {
-            makeTable(data,"table");
+            makeTable(data, "table");
         }
 
     </script>

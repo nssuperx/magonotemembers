@@ -10,3 +10,18 @@
     position: absolute;
     top: 80%;
 }
+
+.topcenter{
+    text-align: center;
+}
+
+.no-gutters {
+  margin:0;
+  padding:0;
+}
+ 
+.no-gutters　> .col,
+.no-gutters　> [class*="col-"] {
+  margin:0;
+  padding:0;
+}
