@@ -33,3 +33,12 @@ table{
   margin:0;
   padding:0;
 }
+
+.catbutton{
+}
+
+@media screen and (max-width:700px) { 
+    /*　画面サイズが700pxからはここを読み込む　*/
+    .catbutton{
+    }
+}
