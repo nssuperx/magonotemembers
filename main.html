@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>まごのてメンバーズ</title>
+</head>
+
+<body>
+    <p id="id_1">電気 てすと</p>
+    <!--<div class="contents" id="table"></div>-->
+    <div class="container" id="table"></div>
+    <!--
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>1</th>
+                    <td>Hanako</td>
+                    <td>Qiita</td>
+                    <td>@Hanaq</td>
+                </tr>
+                <tr>
+                    <th>2</th>
+                    <td>Taro</td>
+                    <td>Qiita</td>
+                    <td>@TaroQ</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+-->
+
+    <script type="text/javascript">
+        // 変数定義（「//」から始まる行はコメントアウト）
+        var id_1 = document.getElementById("id_1");
+        var id_2 = document.getElementById("id_2");
+        var id_3 = document.getElementById("id_3");
+
+        var text = "aaa";
+        var data;
+        var arrnum = 8;
+
+        function makeTable(data, tableId) {
+            // 表の作成開始
+            var rows = [];
+            var table = document.createElement("table");
+            table.className = 'table table-hover';
+
+            // 表に2次元配列の要素を格納
+            for (i = 0; i < data.length; i++) {
+                rows.push(table.insertRow(-1)); // 行の追加
+                for (j = 0; j < data[0].length; j++) {
+                    cell = rows[i].insertCell(-1);
+                    cell.appendChild(document.createTextNode(data[i][j]));
+                    // 背景色の設定
+                    /*
+                    if (i == 0) {
+                        cell.style.backgroundColor = "#bbb"; // ヘッダ行
+                    } else {
+                        cell.style.backgroundColor = "#ddd"; // ヘッダ行以外
+                    }
+                    */
+                }
+            }
+            // 指定したdiv要素に表を加える
+            document.getElementById(tableId).appendChild(table);
+        }
+
+        function getCsv(url) {
+            //CSVファイルを文字列で取得。
+            var txt = new XMLHttpRequest();
+            txt.open('get', url, false);
+            txt.send();
+
+            //改行ごとに配列化
+            var arr = txt.responseText.split('\n');
+
+            //1次元配列を2次元配列に変換
+            var res = [];
+            for (var i = 0; i < arr.length; i++) {
+                //空白行が出てきた時点で終了
+                if (arr[i] == '') break;
+
+                //","ごとに配列化
+                res[i] = arr[i].split(',');
+            }
+
+            return res;
+        }
+        var allData = getCsv("test01.csv");
+        var data = [];
+        for (var i = 0; i < allData[0].length / arrnum - 1; i++) {
+            data[i] = [];
+            for (var j = 0; j < arrnum; j++) {
+                data[i][j] = allData[0][i * 8 + j];
+            }
+        }
+
+        console.log(data);
+        id_1.onclick = function id1Click() {
+            makeTable(data,"table");
+        }
+
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>
