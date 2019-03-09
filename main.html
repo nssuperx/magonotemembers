@@ -17,14 +17,13 @@
     <div style="max-width: 798px" class="mx-auto">
         <img src="images/top.png" class="d-block img-fluid">
         <div class="row no-gutters">
-            <div class="col-sm-2"><img src="images/elec.png"></div>
-            <div class="col-sm-2"><img src="images/shop.png"></div>
-            <div class="col-sm-2"><img src="images/powerwork.png"></div>
-            <div class="col-sm-2"><img src="images/consul.png"></div>
-            <div class="col-sm-2"><img src="images/home.png"></div>
-            <div class="col-sm-2"><img src="images/study.png"></div>
+            <div class="col-sm-2"><img src="images/elec.png" id="id_1"></div>
+            <div class="col-sm-2"><img src="images/shop.png" id="id_2"></div>
+            <div class="col-sm-2"><img src="images/powerwork.png" id="id_3"></div>
+            <div class="col-sm-2"><img src="images/consul.png" id="id_4"></div>
+            <div class="col-sm-2"><img src="images/home.png" id="id_5"></div>
+            <div class="col-sm-2"><img src="images/study.png" id="id_6"></div>
         </div>
-        <p id="id_1">電気 てすと</p>
         <!--<div class="contents" id="table"></div>-->
         <div class="container" id="table"></div>
     </div>
@@ -33,12 +32,13 @@
         var id_1 = document.getElementById("id_1");
         var id_2 = document.getElementById("id_2");
         var id_3 = document.getElementById("id_3");
-
-        var text = "aaa";
-        var data;
+        var id_4 = document.getElementById("id_4");
+        var id_5 = document.getElementById("id_5");
+        var id_6 = document.getElementById("id_6");
         var arrnum = 8;
 
         function makeTable(data, tableId) {
+            $('#table').empty();
             // 表の作成開始
             var rows = [];
             var table = document.createElement("table");
@@ -62,6 +62,19 @@
             }
             // 指定したdiv要素に表を加える
             document.getElementById(tableId).appendChild(table);
+        }
+
+        function makeselectarray(olddata, newdata, str) {
+            var arrcount = 0;
+            for (var i = 0; i < olddata.length; i++) {
+                if (olddata[i][3] == str || olddata[i][4] == str) {
+                    newdata[arrcount] = [];
+                    for (var j = 0; j < arrnum; j++) {
+                        selectdata[arrcount][j] = data[i][j];
+                    }
+                    arrcount += 1;
+                }
+            }
         }
 
         function getCsv(url) {
@@ -95,8 +108,36 @@
         }
 
         console.log(data);
+        var selectdata = [];
         id_1.onclick = function id1Click() {
-            makeTable(data, "table");
+            makeselectarray(data, selectdata, "電気")
+            makeTable(selectdata, "table");
+            selectdata.length = 0;
+        }
+        id_2.onclick = function id1Click() {
+            makeselectarray(data, selectdata, "買い物")
+            makeTable(selectdata, "table");
+            selectdata.length = 0;
+        }
+        id_3.onclick = function id1Click() {
+            makeselectarray(data, selectdata, "力仕事")
+            makeTable(selectdata, "table");
+            selectdata.length = 0;
+        }
+        id_4.onclick = function id1Click() {
+            makeselectarray(data, selectdata, "相談")
+            makeTable(selectdata, "table");
+            selectdata.length = 0;
+        }
+        id_5.onclick = function id1Click() {
+            makeselectarray(data, selectdata, "家事")
+            makeTable(selectdata, "table");
+            selectdata.length = 0;
+        }
+        id_6.onclick = function id1Click() {
+            makeselectarray(data, selectdata, "学び")
+            makeTable(selectdata, "table");
+            selectdata.length = 0;
         }
 
     </script>
