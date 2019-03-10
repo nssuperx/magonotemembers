@@ -11,34 +11,125 @@
     <link rel="stylesheet" href="title.css">
     <link rel="shortcut icon" href="images/favicon.png">
     <title>まごのてメンバーズ</title>
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .container {
+            max-width: 960px;
+        }
+
+        .lh-condensed {
+            line-height: 1.25;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <h1>企業登録フォーム</h1>
-    <form method="post" action="registered.html">
-        <p>企業名：<input type="text" name="name"></p>
-        <p>住所：<input type="text" name="email"></p>
-        <p>TEL：<input type="text" name="tel"></p>
-        <p>Eメール：<input type="text" name="email"></p>
-        <p>
-            カテゴリ<br>
-            <input type="checkbox" name="cat" value="1">電気
-            <input type="checkbox" name="cat" value="2">買い物
-            <input type="checkbox" name="cat" value="3">力仕事
-            <input type="checkbox" name="cat" value="4">相談
-            <input type="checkbox" name="cat" value="5">家事
-            <input type="checkbox" name="cat" value="6">学び
-        </p>
-        <p>できる事：<textarea type="text" name="can" size="100" rows="3">できることをご記入ください</textarea></p>
-        <p>定休日：<input type="text" name="holiday"></p>
-        <p>企業イメージ画像:<br><input type="file" name="upfile" size="20"></p>
-        <p><input type="submit" value="送信する"></p>
-    </form>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <div class="container">
+        <div class="py-5 text-center">
+            <h2>企業登録フォーム</h2>
+            <p class="lead">以下の項目を記入してください</p>
+        </div>
+        <div class="col-md-12 order-md-1">
+            <form class="needs-validation" action="registered.html">
+                <div class="mb-3">
+                    <label for="username">企業名</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="username" placeholder="企業名" required>
+                        <div class="invalid-feedback" style="width: 100%;">
+                            企業名は必須です。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="address">住所</label>
+                    <input type="text" class="form-control" id="address" placeholder="〒" required>
+                    <div class="invalid-feedback">
+                        住所を入力してください。
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 mb-3">
+                        <label for="country">電話番号</label>
+                        <input type="text" class="form-control" id="address" placeholder="000-0000-0000" required>
+                    </div>
+                    <div class="col-md-7 mb-3">
+                        <label for="email">Eメール <span class="text-muted">(任意)</span></label>
+                        <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                    </div>
+                </div>
+                <hr class="mb-4">
+                <label for="cat">カテゴリー</label>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="elec">
+                    <label class="custom-control-label" for="elec">電気</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="shop">
+                    <label class="custom-control-label" for="shop">買い物</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="power">
+                    <label class="custom-control-label" for="power">力仕事</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="consul">
+                    <label class="custom-control-label" for="consul">相談</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="home">
+                    <label class="custom-control-label" for="home">家事</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="study">
+                    <label class="custom-control-label" for="study">学び</label>
+                </div>
+                <hr class="mb-4">
+
+                <label for="can">できること</label>
+                <input type="text" class="form-control" id="can" placeholder="できることを記入してください。" required>
+                
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <label for="cc-name">定休日</label>
+                        <input type="text" class="form-control" id="holiday" placeholder="">
+                    </div>
+                </div>
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">登録</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2017-2019 まごのてメンバーズ</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Privacy</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+    </footer>
+    </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')
+    </script>
+    <script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+    <script src="form-validation.js"></script>
 </body>
 
 </html>
