@@ -25,23 +25,11 @@
             <div class="col-sm-2"><img src="images/study.png" id="id_6"></div>
         </div>
         <!--<div class="contents" id="table"></div>-->
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="h-100">
-                        <img src="images/office1.jpg">
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="bg-warning h-100">
-                        <p>hello</p>
-                        <p>hello</p>
-                        <p>hello</p>
-                    </div>
-                </div>
-
-            </div>
+        <div class="container officelist">
         </div>
+        <hr>
+        <a href="register.html" class="btn btn-primary btn-lg" role="button">企業登録</a><hr>
+        <a href="main.html" class="btn btn-light btn-lg" role="button">メインページ</a>
     </div>
 
 
@@ -53,25 +41,7 @@
         var id_5 = document.getElementById("id_5");
         var id_6 = document.getElementById("id_6");
         var arrnum = 10;
-
-        function makeTable(data, tableId) {
-            $('#table').empty();
-            // 表の作成開始
-            var rows = [];
-            var table = document.createElement("table");
-            table.className = 'table table-hover';
-
-            // 表に2次元配列の要素を格納
-            for (i = 0; i < data.length; i++) {
-                rows.push(table.insertRow(-1)); // 行の追加
-                for (j = 0; j < data[0].length; j++) {
-                    cell = rows[i].insertCell(-1);
-                    cell.appendChild(document.createTextNode(data[i][j]));
-                }
-            }
-            // 指定したdiv要素に表を加える
-            document.getElementById(tableId).appendChild(table);
-        }
+        var imagearray = ['images/office1.jpg','images/office2.jpg','images/office3.png','images/office4.png','images/office5.png','images/office6.png','images/office7.png','images/office8.png','images/office9.jpg','images/office10.jpg','images/office11.jpg','images/office12.jpg','images/office13.jpg'];
 
         function makeselectarray(olddata, newdata, str) {
             var arrcount = 0;
@@ -116,36 +86,98 @@
             }
         }
 
+        function test(selectdata) {
+            $('.officelist').children().remove();
+            var data = "";
+            for (var i = 0; i < selectdata.length; i++) {
+                var imagestr = imagearray[Math.floor( Math.random() * imagearray.length)];
+                data += `<div class="row">
+                <div class="col-5">
+                    <div class="h-100">
+                        <img src="`+imagestr+`" class="officeimg">
+                    </div>
+                </div>
+                <div class="col-7">
+                    <div class="h-180">
+                        <div class="row">
+                            <div class="col-sm-12 border border-primary">
+                                <p>` + selectdata[i][1] + `</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 border border-warning">
+                                <p>カテゴリ</p>
+                            </div>
+                            <div class="col-4 border border-warning">
+                                <p>` + selectdata[i][3] + `</p>
+                            </div>
+                            <div class="col-4 border border-warning">
+                                <p>` + selectdata[i][4] + `</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 border boeder-info">
+                                <p>住所</p>
+                            </div>
+                            <div class="col-8 border boeder-info">
+                                <p>` + selectdata[i][7] + `</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 border boeder-info">
+                                <p>TEL</p>
+                            </div>
+                            <div class="col-8 border boeder-info">
+                                <p>` + selectdata[i][5] + `</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 border boeder-info">
+                                <p>Eメール</p>
+                            </div>
+                            <div class="col-8 border boeder-info">
+                                <p>` + selectdata[i][2] + `</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+                //console.log(data);
+                
+            }
+            $('.officelist').append(data);
+        }
+
         console.log(data);
         var selectdata = [];
         id_1.onclick = function id1Click() {
             makeselectarray(data, selectdata, "電気")
-            makeTable(selectdata, "table");
+            test(selectdata);
             selectdata.length = 0;
         }
         id_2.onclick = function id1Click() {
             makeselectarray(data, selectdata, "買い物")
-            makeTable(selectdata, "table");
+            test(selectdata);
             selectdata.length = 0;
         }
         id_3.onclick = function id1Click() {
             makeselectarray(data, selectdata, "力仕事")
-            makeTable(selectdata, "table");
+            test(selectdata);
             selectdata.length = 0;
         }
         id_4.onclick = function id1Click() {
             makeselectarray(data, selectdata, "相談")
-            makeTable(selectdata, "table");
+            test(selectdata);
             selectdata.length = 0;
         }
         id_5.onclick = function id1Click() {
             makeselectarray(data, selectdata, "家事")
-            makeTable(selectdata, "table");
+            test(selectdata);
             selectdata.length = 0;
         }
         id_6.onclick = function id1Click() {
             makeselectarray(data, selectdata, "学び")
-            makeTable(selectdata, "table");
+            test(selectdata);
             selectdata.length = 0;
         }
 
