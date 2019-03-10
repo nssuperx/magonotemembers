@@ -36,7 +36,7 @@
         var id_4 = document.getElementById("id_4");
         var id_5 = document.getElementById("id_5");
         var id_6 = document.getElementById("id_6");
-        var arrnum = 8;
+        var arrnum = 10;
 
         function makeTable(data, tableId) {
             $('#table').empty();
@@ -91,12 +91,12 @@
 
             return res;
         }
-        var allData = getCsv("test01.csv");
+        var allData = getCsv("test02.csv");
         var data = [];
         for (var i = 0; i < allData[0].length / arrnum - 1; i++) {
             data[i] = [];
             for (var j = 0; j < arrnum; j++) {
-                data[i][j] = allData[0][i * 8 + j];
+                data[i][j] = allData[0][i * arrnum + j];
             }
         }
 
